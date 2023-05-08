@@ -45,7 +45,7 @@ This application is intended to be deployed in a single stage: the Workers scrip
 
 - `src/index.js` should be matched with your _root_ path: for instance, `todo.kristianfreeman.com`.
 
-You should also set up a Cloudflare KV namespace for your project, [using the Cloudflare API](https://developers.cloudflare.com/workers/kv/writing-data/). In this example, I use `KRISTIAN_TODOS`, but you can obviously call it whatever fits your version of the project. In particular, make sure that you do a find-and-replace for `KRISTIAN_TODOS`, and _also_ find out your namespace ID. The documentation linked above will instruct you on how to do that.
+You should also set up a Cloudflare KV namespace for your project, [using the Cloudflare API](https://developers.cloudflare.com/workers/kv/writing-data/). In this example, I use `EXAMPLE_TODOS`, but you can obviously call it whatever fits your version of the project. In particular, make sure that you do a find-and-replace for `EXAMPLE_TODOS`, and _also_ find out your namespace ID. To properly test using `wrangler dev`, you'll also want to create a preview namespace and copy that ID in `wrangler.toml` for the namespace `preview_id`. The documentation linked above will instruct you on how to do that.
 
 In addition, you need access to a few API keys and values for use inside of `workers/todos.js`:
 
