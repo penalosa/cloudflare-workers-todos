@@ -4,7 +4,7 @@ This is the source code for a simple todo application, powered by Cloudflare Wor
 
 ![](./static/demo.png)
 
-This project is served entirely from the edge, meaning that `workers/index.js` is the primary file.
+This project is served entirely from the edge, meaning that `src/index.js` is the primary file.
 
 **Note that to experiment with this project, or fork it for your own usage, you'll need access to both Cloudflare Workers and Cloudflare KV.**
 
@@ -14,7 +14,7 @@ An example version of this project can be found at [todo.kristianfreeman.com](ht
 
 The Worker script runs at the edge of the network (Cloudflare), between the client and the origin.
 
-### `workers/todos.js`
+### `src/index.js`
 
 This script handles reading and writing todos from KV, as well as making them available in the HTML of the client.
 
@@ -43,7 +43,7 @@ The application allows you to view todos from the KV cache, add new todos, and u
 
 This application is intended to be deployed in a single stage: the Workers script in `workers/` should be deployed to Cloudflare Workers, and configured in the following format:
 
-- `workers/todos.js` should be matched with your _root_ path: for instance, `todo.kristianfreeman.com`.
+- `src/index.js` should be matched with your _root_ path: for instance, `todo.kristianfreeman.com`.
 
 You should also set up a Cloudflare KV namespace for your project, [using the Cloudflare API](https://developers.cloudflare.com/workers/kv/writing-data/). In this example, I use `KRISTIAN_TODOS`, but you can obviously call it whatever fits your version of the project. In particular, make sure that you do a find-and-replace for `KRISTIAN_TODOS`, and _also_ find out your namespace ID. The documentation linked above will instruct you on how to do that.
 
