@@ -80,49 +80,50 @@ const html = (todos) => `
 </html>
 `;
 
-const defaultData = { todos: [] };
+export default {
+  async fetch(request, env) {
+    const defaultData = { todos: [] };
 
-const setCache = (key, data) => EXAMPLE_TODOS.put(key, data);
-const getCache = (key) => EXAMPLE_TODOS.get(key);
+    const setCache = (key, data) => env.EXAMPLE_TODOS.put(key, data);
+    const getCache = (key) => env.EXAMPLE_TODOS.get(key);
+    const deleteCache = (key) => env.EXAMPLE_TODOS.delete(key);
 
-async function getTodos(request) {
-  const ip = request.headers.get("CF-Connecting-IP");
-  const cacheKey = `data-${ip}`;
-  let data;
-  const cache = await getCache(cacheKey);
-  if (!cache) {
-    await setCache(cacheKey, JSON.stringify(defaultData));
-    data = defaultData;
-  } else {
-    data = JSON.parse(cache);
-  }
-  const body = html(JSON.stringify(data.todos || []).replace(/</g, "\\u003c"));
-  return new Response(body, {
-    headers: { "Content-Type": "text/html" },
-  });
-}
+    async function getTodos(request) {
+      const ip = request.headers.get("CF-Connecting-IP");
+      const cacheKey = `data-${ip}`;
+      let data;
+      const cache = await getCache(cacheKey);
+      if (!cache) {
+        await setCache(cacheKey, JSON.stringify(defaultData));
+        data = defaultData;
+      } else {
+        data = JSON.parse(cache);
+      }
+      const body = html(
+        JSON.stringify(data.todos || []).replace(/</g, "\\u003c")
+      );
+      return new Response(body, {
+        headers: { "Content-Type": "text/html" },
+      });
+    }
 
-async function updateTodos(request) {
-  const body = await request.text();
-  const ip = request.headers.get("CF-Connecting-IP");
-  const cacheKey = `data-${ip}`;
-  try {
-    JSON.parse(body);
-    await setCache(cacheKey, body);
-    return new Response(body, { status: 200 });
-  } catch (err) {
-    return new Response(err, { status: 500 });
-  }
-}
+    async function updateTodos(request) {
+      const body = await request.text();
+      const ip = request.headers.get("CF-Connecting-IP");
+      const cacheKey = `data-${ip}`;
+      try {
+        JSON.parse(body);
+        await setCache(cacheKey, body);
+        return new Response(body, { status: 200 });
+      } catch (err) {
+        return new Response(err, { status: 500 });
+      }
+    }
 
-async function handleRequest(request) {
-  if (request.method === "PUT") {
-    return updateTodos(request);
-  } else {
-    return getTodos(request);
-  }
-}
-
-addEventListener("fetch", (event) => {
-  event.respondWith(handleRequest(event.request));
-});
+    if (request.method === "PUT") {
+      return updateTodos(request);
+    } else {
+      return getTodos(request);
+    }
+  },
+};
