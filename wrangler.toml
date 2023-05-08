@@ -1,0 +1,7 @@
+name = "todo-list-app"
+main = "src/index.js"
+compatibility_date = "2023-05-05"
+
+kv_namespaces = [
+  { binding = "EXAMPLE_TODOS", id = "aa6514ddd5814ebdaa4e7e632161e5a6" }
+]

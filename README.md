@@ -1,10 +1,10 @@
 # Cloudflare Workers Todo List App
 
-This is the source code for my Cloudflare Workers project - a simple todo application, powered by Cloudflare KV as the primary data source.
+This is the source code for a simple todo application, powered by Cloudflare Workers with Cloudflare KV as the primary data source.
 
 ![](./static/demo.png)
 
-This project is served entirely from the edge, meaning that `workers/todo.js` is the primary file.
+This project is served entirely from the edge, meaning that `workers/index.js` is the primary file.
 
 **Note that to experiment with this project, or fork it for your own usage, you'll need access to both Cloudflare Workers and Cloudflare KV.**
 

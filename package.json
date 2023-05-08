@@ -1,0 +1,15 @@
+{
+  "name": "todo-list-app",
+  "version": "1.0.0",
+  "description": "This is the source code for a simple todo application, powered by Cloudflare Workers with Cloudflare KV as the primary data source.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^2.19.0"
+  }
+}
