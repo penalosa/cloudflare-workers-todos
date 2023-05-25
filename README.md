@@ -1,5 +1,7 @@
 # Cloudflare Workers Todo List App
 
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/penalosa/cloudflare-workers-todos)
+
 This is the source code for a simple todo application, powered by Cloudflare Workers with Cloudflare KV as the primary data source.
 
 ![](./static/demo.png)
