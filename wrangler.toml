@@ -8,5 +8,5 @@ kv_namespaces = [
 
 [env.preview]
 kv_namespaces = [
-  { binding = "EXAMPLE_TODOS_PREVIEW", id = "f6759e59ae9a48b0bfd391ac89b6a7fd" }
+  { binding = "EXAMPLE_TODOS", id = "f6759e59ae9a48b0bfd391ac89b6a7fd" }
 ]
