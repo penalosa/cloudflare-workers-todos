@@ -3,5 +3,10 @@ main = "src/index.js"
 compatibility_date = "2023-05-05"
 
 kv_namespaces = [
-  { binding = "EXAMPLE_TODOS", id = "<NAMESPACE_ID>", preview_id = "<NAMESPACE_PREVIEW_ID>" }
+  { binding = "EXAMPLE_TODOS", id = "925964e5c1b14674b915260c5d65a1d0", preview_id = "925964e5c1b14674b915260c5d65a1d0" }
+]
+
+[env.preview]
+kv_namespaces = [
+  { binding = "EXAMPLE_TODOS_PREVIEW", id = "f6759e59ae9a48b0bfd391ac89b6a7fd" }
 ]
